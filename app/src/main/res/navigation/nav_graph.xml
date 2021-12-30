@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/PlayFragment"
+        android:name="com.uc.sej11.view.Fragments.PlayFragment"
+        android:label="fragment_play"
+        tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id="@+id/ScoreboardFragment"
+        android:name="com.uc.sej11.view.Fragments.ScoreboardFragment"
+        android:label="fragment_scoreboard"
+        tools:layout="@layout/fragment_scoreboard" />
+    <fragment
+        android:id="@+id/MateriFragment"
+        android:name="com.uc.sej11.view.Fragments.MateriFragment"
+        android:label="fragment_materi"
+        tools:layout="@layout/fragment_materi" />
+    <fragment
+        android:id="@+id/OptionFragment"
+        android:name="com.uc.sej11.view.Fragments.OptionFragment"
+        android:label="fragment_option"
+        tools:layout="@layout/fragment_option" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.uc.sej11.view.Fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
+</navigation>

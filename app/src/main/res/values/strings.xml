@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Sej11</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_Play">Main</string>
+    <string name="menu_Materi">Materi</string>
+    <string name="menu_Scoreboard">Scoreboard</string>
+    <string name="menu_Options">Opsi</string>
+    <string name="text_login">Login</string>
+    <string name="login_please">Please login to continue.</string>
+    <string name="login_email">Email</string>
+    <string name="text_password">Password</string>
+    <string name="login_notuser">Not an user?</string>
+    <string name="login_registernow">Register now</string>
+    <string name="hint_login_email">Enter your email...</string>
+    <string name="hint_login_password">Enter your password...</string>
+    <string name="text_register">Register</string>
+    <string name="text_name">Name</string>
+    <string name="register_passconfirm">Password Confirmation</string>
+    <string name="register_city">City</string>
+    <string name="register_school">School</string>
+    <string name="register_birth">Birth Year</string>
+</resources>
