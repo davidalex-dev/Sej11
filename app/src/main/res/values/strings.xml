@@ -12,12 +12,20 @@
     <string name="text_password">Password</string>
     <string name="login_notuser">Not an user?</string>
     <string name="login_registernow">Register now</string>
-    <string name="hint_login_email">Enter your email...</string>
-    <string name="hint_login_password">Enter your password...</string>
     <string name="text_register">Register</string>
     <string name="text_name">Name</string>
     <string name="register_passconfirm">Password Confirmation</string>
     <string name="register_city">City</string>
     <string name="register_school">School</string>
     <string name="register_birth">Birth Year</string>
+    <string name="register_username">Username</string>
+
+    <string name="hint_email">Enter your email...</string>
+    <string name="hint_password">Enter your password...</string>
+    <string name="hint_name">Enter your name...</string>
+    <string name="hint_username">Enter your username...</string>
+    <string name="hint_birthyear">Enter your birth year</string>
+    <string name="hint_city">Enter your city</string>
+    <string name="hint_school">Enter your school\'s name</string>
+    <string name="option_logout">Logout</string>
 </resources>

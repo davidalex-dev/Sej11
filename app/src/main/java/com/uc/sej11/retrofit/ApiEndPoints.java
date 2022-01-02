@@ -23,6 +23,7 @@ public interface ApiEndPoints {
     @FormUrlEncoded
     Call<RegisterResponse> register(@Field("name") String name,
                                     @Field("email") String email,
+                                    @Field("username") String username,
                                     @Field("password") String password,
                                     @Field("password_confirmation") String password_confirmation,
                                     @Field("school") String school,
@@ -31,4 +32,6 @@ public interface ApiEndPoints {
 
     @POST("logout")
     Call<JsonObject> logout();
+
+
 }

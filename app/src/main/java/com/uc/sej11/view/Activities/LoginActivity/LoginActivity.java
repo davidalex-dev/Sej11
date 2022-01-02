@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
+import com.uc.sej11.view.Activities.MainActivity;
 import com.uc.sej11.view.Activities.RegisterActivity.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -49,18 +51,18 @@ public class LoginActivity extends AppCompatActivity {
                     email_login.setError(null);
                     password_login.setError(null);
 
-                    //                loginViewModel.login(email, pass).observe(LoginActivity.this, tokenResponse -> {
-                    //                    if(tokenResponse !=null){
-                    //                        helper.saveAccessToken(tokenResponse.getAuthorization());
-                    //                        Toast.makeText(getApplicationContext(), "Login success.", Toast.LENGTH_SHORT).show();
-                    //                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                    //                        startActivity(i);
-                    //                        finish();
-                    //
-                    //                    }else{
-                    //                        Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_SHORT).show();
-                    //                    }
-                    //                });
+                                    loginViewModel.login(email, pass).observe(LoginActivity.this, tokenResponse -> {
+                                        if(tokenResponse !=null){
+                                            helper.saveAccessToken(tokenResponse.getAuthorization());
+                                            Toast.makeText(getApplicationContext(), "Login success.", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(i);
+                                            finish();
+
+                                        }else{
+                                            Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                     
                 }else{
 

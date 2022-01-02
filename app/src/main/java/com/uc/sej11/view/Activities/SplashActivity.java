@@ -25,6 +25,11 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed (new Runnable(){
             @Override
             public void run(){
+
+                //this one is for testing purposes only
+//                Intent i = new Intent(SplashActivity.this, MainActivity.class);
+//                startActivity(i);
+
                 if (helper.getAccessToken().isEmpty()){
                     Toast.makeText(getApplicationContext(), "Not logged in.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SplashActivity.this, LoginActivity.class);

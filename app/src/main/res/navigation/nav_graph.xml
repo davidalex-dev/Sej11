@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_materi" />
     <fragment
         android:id="@+id/OptionFragment"
-        android:name="com.uc.sej11.view.Fragments.OptionFragment"
+        android:name="com.uc.sej11.view.Fragments.OptionFragment.OptionFragment"
         android:label="fragment_option"
         tools:layout="@layout/fragment_option" />
     <fragment

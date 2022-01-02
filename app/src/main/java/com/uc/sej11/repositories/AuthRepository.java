@@ -55,12 +55,12 @@ public class AuthRepository {
         return tokenResponse;
     }
 
-    public MutableLiveData<RegisterResponse> register(String name, String email,
+    public MutableLiveData<RegisterResponse> register(String name, String email, String username,
                                                               String password, String password_confirmation,
                                                               String school, String city, String birthyear){
         MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
 
-        apiService.register(name, email, password, password_confirmation, school, city, birthyear).enqueue(new Callback<RegisterResponse>() {
+        apiService.register(name, email, username, password, password_confirmation, school, city, birthyear).enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if(response.isSuccessful()){

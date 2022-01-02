@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 public class RegisterResponse implements Parcelable {
     private String name;
     private String email;
+    private String username;
     private String password;
     private String school;
     private String city;
@@ -16,6 +17,7 @@ public class RegisterResponse implements Parcelable {
     protected RegisterResponse(Parcel in) {
         name = in.readString();
         email = in.readString();
+        username = in.readString();
         password = in.readString();
         school = in.readString();
         city = in.readString();
@@ -54,6 +56,10 @@ public class RegisterResponse implements Parcelable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getUsername() { return username; }
+
+    public void setUsername(){ this.username = username; }
 
     public String getPassword() {
         return password;
@@ -97,6 +103,7 @@ public class RegisterResponse implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(email);
+        parcel.writeString(username);
         parcel.writeString(password);
         parcel.writeString(school);
         parcel.writeString(city);
