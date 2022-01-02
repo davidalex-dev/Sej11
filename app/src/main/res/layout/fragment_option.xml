@@ -35,4 +35,37 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/textView_option_name"
         app:layout_constraintTop_toBottomOf="@+id/textView_option_name" />
+
+    <TextView
+        android:id="@+id/textView_option_school"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/textView_option_email"
+        app:layout_constraintTop_toBottomOf="@+id/textView_option_email" />
+
+    <TextView
+        android:id="@+id/textView_option_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/textView_option_school"
+        app:layout_constraintTop_toBottomOf="@+id/textView_option_school" />
+
+    <TextView
+        android:id="@+id/textView_option_birthyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/textView_option_city"
+        app:layout_constraintTop_toBottomOf="@+id/textView_option_city" />
+
+    <Button
+        android:id="@+id/button_option_changeProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/option_change"
+        app:layout_constraintBottom_toTopOf="@+id/button_option_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
