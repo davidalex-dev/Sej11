@@ -1,14 +1,26 @@
-package com.uc.sej11.view.Fragments;
+package com.uc.sej11.view.Fragments.PlayFragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.uc.sej11.R;
+import com.uc.sej11.helper.SharedPreferenceHelper;
+import com.uc.sej11.model.Materi;
+import com.uc.sej11.view.Fragments.MateriFragment.MateriViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +28,11 @@ import com.uc.sej11.R;
  * create an instance of this fragment.
  */
 public class PlayFragment extends Fragment {
+
+    private MateriViewModel materiViewModel;
+    private RecyclerView recyclerView;
+    private SharedPreferenceHelper helper;
+    private PlayAdapter playAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,4 +80,31 @@ public class PlayFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_play, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = view.findViewById(R.id.rv_play);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        materiViewModel = new ViewModelProvider(getActivity()).get(MateriViewModel.class);
+        materiViewModel.init(helper.getAccessToken());
+        materiViewModel.getData();
+        materiViewModel.getResultData().observe(getActivity(), showData);
+    }
+
+    List<Materi.Data> results = new ArrayList<>();
+    LinearLayoutManager linearLayoutManager;
+
+    private Observer<Materi> showData = new Observer<Materi>() {
+        @Override
+        public void onChanged(Materi materi) {
+            results = materi.getData();
+            playAdapter = new PlayAdapter(getActivity());
+            playAdapter.setDataList(results);
+            linearLayoutManager = new LinearLayoutManager(getActivity());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(playAdapter);
+        }
+    };
 }

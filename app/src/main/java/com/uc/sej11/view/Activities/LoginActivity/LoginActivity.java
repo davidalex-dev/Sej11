@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
-import com.uc.sej11.view.Activities.MainActivity;
+import com.uc.sej11.view.Activities.MainActivity.MainActivity;
 import com.uc.sej11.view.Activities.RegisterActivity.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -101,5 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_reg = findViewById(R.id.textView_login_registerNow);
 
         loginViewModel = new ViewModelProvider(LoginActivity.this).get(LoginViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(LoginActivity.this);
     }
 }

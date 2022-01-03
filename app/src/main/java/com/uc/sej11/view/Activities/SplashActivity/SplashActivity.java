@@ -1,4 +1,4 @@
-package com.uc.sej11.view.Activities;
+package com.uc.sej11.view.Activities.SplashActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
 import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
+import com.uc.sej11.view.Activities.MainActivity.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,9 +28,10 @@ public class SplashActivity extends AppCompatActivity {
             public void run(){
 
                 //this one is for testing purposes only
-//                Intent i = new Intent(SplashActivity.this, MainActivity.class);
+//                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
 //                startActivity(i);
 
+                //if code is done
                 if (helper.getAccessToken().isEmpty()){
                     Toast.makeText(getApplicationContext(), "Not logged in.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SplashActivity.this, LoginActivity.class);

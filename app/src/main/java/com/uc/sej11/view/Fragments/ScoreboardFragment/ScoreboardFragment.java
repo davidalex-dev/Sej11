@@ -1,4 +1,4 @@
-package com.uc.sej11.view.Fragments;
+package com.uc.sej11.view.Fragments.ScoreboardFragment;
 
 import android.os.Bundle;
 

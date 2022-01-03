@@ -16,6 +16,21 @@
         android:theme="@style/Theme.Sej11"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.Activities.BeforeQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Activities.MateriReadyActivity.MateriReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Activities.PlayUraianActivity.PlayUraianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Activities.PlayPilganActivity.PlayPilganActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Activities.ResultActivity.ResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.Activities.ChangeProfileActivity.ChangeProfileActivity"
             android:exported="false" />
         <activity
@@ -25,7 +40,7 @@
             android:name=".view.Activities.LoginActivity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Activities.SplashActivity"
+            android:name=".view.Activities.SplashActivity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Activities.MainActivity"
+            android:name=".view.Activities.MainActivity.MainActivity"
             android:exported="true" />
     </application>
 

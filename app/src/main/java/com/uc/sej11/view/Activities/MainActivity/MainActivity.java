@@ -1,4 +1,4 @@
-package com.uc.sej11.view.Activities;
+package com.uc.sej11.view.Activities.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

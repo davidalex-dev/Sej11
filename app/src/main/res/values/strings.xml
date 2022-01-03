@@ -29,4 +29,5 @@
     <string name="hint_school">Enter your school\'s name</string>
     <string name="option_logout">Logout</string>
     <string name="option_change">Change Profile</string>
+    <string name="app_welcome">Welcome to Sej11!</string>
 </resources>

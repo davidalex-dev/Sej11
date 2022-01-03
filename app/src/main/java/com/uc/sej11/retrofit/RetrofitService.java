@@ -2,7 +2,9 @@ package com.uc.sej11.retrofit;
 
 import com.google.gson.JsonObject;
 import com.uc.sej11.helper.Const;
+import com.uc.sej11.model.Materi;
 import com.uc.sej11.model.RegisterResponse;
+import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
 
 import okhttp3.OkHttpClient;
@@ -61,6 +63,14 @@ public class RetrofitService {
                                            String school, String city, String birthyear){
         return api.register(name, email, username, password, password_confirmation, school, city,
                 birthyear);
+    }
+
+    public Call<Materi> getData(){
+        return api.getData();
+    }
+
+    public Call<Soal> getSoal(){
+        return api.getSoal();
     }
 
     public Call<JsonObject> logout(){return api.logout();}

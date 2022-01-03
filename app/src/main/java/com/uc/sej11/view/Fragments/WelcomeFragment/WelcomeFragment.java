@@ -1,4 +1,4 @@
-package com.uc.sej11.view.Fragments;
+package com.uc.sej11.view.Fragments.WelcomeFragment;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.uc.sej11.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MateriFragment#newInstance} factory method to
+ * Use the {@link WelcomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MateriFragment extends Fragment {
+public class WelcomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class MateriFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MateriFragment() {
+    public WelcomeFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class MateriFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MateriFragment.
+     * @return A new instance of fragment WelcomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MateriFragment newInstance(String param1, String param2) {
-        MateriFragment fragment = new MateriFragment();
+    public static WelcomeFragment newInstance(String param1, String param2) {
+        WelcomeFragment fragment = new WelcomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class MateriFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_materi, container, false);
+        return inflater.inflate(R.layout.fragment_welcome, container, false);
     }
 }

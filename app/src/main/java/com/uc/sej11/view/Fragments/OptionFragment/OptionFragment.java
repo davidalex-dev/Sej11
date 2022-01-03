@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
+import com.uc.sej11.view.Activities.ChangeProfileActivity.ChangeProfileActivity;
 import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
 
 /**
@@ -25,8 +26,8 @@ import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
  * create an instance of this fragment.
  */
 public class OptionFragment extends Fragment {
-    TextView txt_name, txt_email;
-    Button btn_logout;
+    TextView txt_name, txt_email, txt_school, txt_city, txt_birthyear;
+    Button btn_logout, btn_change;
 
     private OptionViewModel optionViewModel;
     private SharedPreferenceHelper helper;
@@ -89,6 +90,21 @@ public class OptionFragment extends Fragment {
         optionViewModel.init(helper.getAccessToken());
 
         btn_logout = view.findViewById(R.id.button_option_logout);
+        btn_change = view.findViewById(R.id.button_option_changeProfile);
+        txt_name = view.findViewById(R.id.textView_option_name);
+        txt_email = view.findViewById(R.id.textView_option_email);
+        txt_school = view.findViewById(R.id.textView_option_school);
+        txt_city = view.findViewById(R.id.textView_option_city);
+        txt_birthyear = view.findViewById(R.id.textView_option_birthyear);
+
+
+        btn_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), ChangeProfileActivity.class);
+                startActivity(i);
+            }
+        });
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
