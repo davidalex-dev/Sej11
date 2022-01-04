@@ -3,7 +3,6 @@ package com.uc.sej11.retrofit;
 import com.google.gson.JsonObject;
 import com.uc.sej11.model.Materi;
 import com.uc.sej11.model.RegisterResponse;
-import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
 
 import retrofit2.Call;
@@ -11,7 +10,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface ApiEndPoints {
     @POST("login")
@@ -35,12 +33,12 @@ public interface ApiEndPoints {
     @GET("sej11_levels")
     Call<Materi> getData();
 
-    @GET("sej11_soal")
-    Call<Soal> getSoal();
-
-    @GET("sej11_soal/{sej11_soal}")
-    Call<Soal> getSoal(
-            @Path("sej11_soal") String id
-    );
+//    @GET("sej11_soal")
+//    Call<Soal> getSoal();
+//
+//    @GET("sej11_soal/{sej11_soal}")
+//    Call<Soal> getSoal(
+//            @Path("sej11_soal") String id
+//    );
 
 }

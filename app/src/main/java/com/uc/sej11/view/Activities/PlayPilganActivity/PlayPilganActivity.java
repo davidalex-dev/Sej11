@@ -11,12 +11,6 @@ import android.widget.TextView;
 
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
-import com.uc.sej11.model.Soal;
-import com.uc.sej11.view.Activities.RegisterActivity.RegisterActivity;
-import com.uc.sej11.view.Activities.RegisterActivity.RegisterViewModel;
-import com.uc.sej11.view.Fragments.MateriFragment.MateriViewModel;
-
-import java.util.List;
 
 public class PlayPilganActivity extends AppCompatActivity {
 
