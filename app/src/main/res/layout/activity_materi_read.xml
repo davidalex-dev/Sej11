@@ -11,46 +11,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ConstraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/textView_materi_read_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView_materi_read_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView_materi_read_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView_materi_read_picture"
+            app:layout_constraintStart_toStartOf="@+id/imageView_materi_read_picture"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_materi_read_picture" />
 
-            <ImageView
-                android:id="@+id/imageView_materi_read_picture"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView_materi_read_title"
-                app:layout_constraintStart_toStartOf="@+id/textView_materi_read_title"
-                app:layout_constraintTop_toBottomOf="@+id/textView_materi_read_title"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        <ImageView
+            android:id="@+id/imageView_materi_read_picture"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView_materi_read_title"
+            app:layout_constraintStart_toStartOf="@+id/textView_materi_read_title"
+            app:layout_constraintTop_toBottomOf="@+id/textView_materi_read_title"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <TextView
-                android:id="@+id/textView_materi_read_description"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/imageView_materi_read_picture"
-                app:layout_constraintStart_toStartOf="@+id/imageView_materi_read_picture"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_materi_read_picture" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
