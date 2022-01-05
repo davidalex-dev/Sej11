@@ -12,7 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="10"
         android:text="@string/option_logout"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -21,18 +24,24 @@
         android:id="@+id/textView_option_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="32dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1"
         android:text="TextView"
+        android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView_option_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView_option_name"
         app:layout_constraintTop_toBottomOf="@+id/textView_option_name" />
 
@@ -40,7 +49,11 @@
         android:id="@+id/textView_option_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView_option_email"
         app:layout_constraintTop_toBottomOf="@+id/textView_option_email" />
 
@@ -48,7 +61,11 @@
         android:id="@+id/textView_option_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView_option_school"
         app:layout_constraintTop_toBottomOf="@+id/textView_option_school" />
 
@@ -56,7 +73,11 @@
         android:id="@+id/textView_option_birthyear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="1"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView_option_city"
         app:layout_constraintTop_toBottomOf="@+id/textView_option_city" />
 
@@ -64,8 +85,22 @@
         android:id="@+id/button_option_changeProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="10"
         android:text="@string/option_change"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button_option_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

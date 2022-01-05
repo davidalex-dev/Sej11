@@ -4,7 +4,10 @@ import com.google.gson.JsonObject;
 import com.uc.sej11.helper.Const;
 import com.uc.sej11.model.Materi;
 import com.uc.sej11.model.RegisterResponse;
+import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -71,6 +74,10 @@ public class RetrofitService {
 //    public Call<Soal> getSoal(){
 //        return api.getSoal();
 //    }
+
+    public Call<Soal> getSej11_soal(String id){
+        return api.getSej11_soal(id);
+    }
 
     public Call<JsonObject> logout(){return api.logout();}
 

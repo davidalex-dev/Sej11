@@ -3,6 +3,7 @@ package com.uc.sej11.view.Activities.BeforeQuizActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,6 +19,17 @@ public class BeforeQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before_quiz);
         InitView();
+
+        btn_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show are you ready?
+
+                //if user clicks on ok
+                //go to playpilgan
+
+            }
+        });
 
     }
 
