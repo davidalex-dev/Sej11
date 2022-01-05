@@ -3,6 +3,7 @@ package com.uc.sej11.retrofit;
 import com.google.gson.JsonObject;
 import com.uc.sej11.helper.Const;
 import com.uc.sej11.model.Materi;
+import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
@@ -77,6 +78,10 @@ public class RetrofitService {
 
     public Call<Soal> getSej11_soal(String id){
         return api.getSej11_soal(id);
+    }
+
+    public Call<Pilgan> getSej11_opsi_pilgan(String id){
+        return api.getSej11_opsi_pilgan(id);
     }
 
     public Call<JsonObject> logout(){return api.logout();}

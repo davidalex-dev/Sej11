@@ -2,6 +2,7 @@ package com.uc.sej11.retrofit;
 
 import com.google.gson.JsonObject;
 import com.uc.sej11.model.Materi;
+import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
@@ -39,6 +40,11 @@ public interface ApiEndPoints {
 
     @GET("sej11_soal/{id}")
     Call<Soal> getSej11_soal(
+            @Path("id") String id
+    );
+
+    @GET("sej11_opsi_pilgan/{id}")
+    Call<Pilgan> getSej11_opsi_pilgan(
             @Path("id") String id
     );
 
