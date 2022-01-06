@@ -6,6 +6,7 @@ import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
+import com.uc.sej11.model.Waktu;
 
 import java.util.List;
 
@@ -45,6 +46,11 @@ public interface ApiEndPoints {
 
     @GET("sej11_opsi_pilgan/{id}")
     Call<Pilgan> getSej11_opsi_pilgan(
+            @Path("id") String id
+    );
+
+    @GET("sej11_waktu/{id}")
+    Call<Waktu> getSej11_waktu(
             @Path("id") String id
     );
 

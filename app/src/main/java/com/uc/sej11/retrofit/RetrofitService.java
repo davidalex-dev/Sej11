@@ -7,6 +7,7 @@ import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
+import com.uc.sej11.model.Waktu;
 
 import java.util.List;
 
@@ -72,12 +73,12 @@ public class RetrofitService {
         return api.getData();
     }
 
-//    public Call<Soal> getSoal(){
-//        return api.getSoal();
-//    }
-
     public Call<Soal> getSej11_soal(String id){
         return api.getSej11_soal(id);
+    }
+
+    public Call<Waktu> getSej11_waktu(String id){
+        return api.getSej11_waktu(id);
     }
 
     public Call<Pilgan> getSej11_opsi_pilgan(String id){

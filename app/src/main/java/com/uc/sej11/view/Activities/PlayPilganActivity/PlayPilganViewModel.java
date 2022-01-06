@@ -10,14 +10,17 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.Soal;
+import com.uc.sej11.model.Waktu;
 import com.uc.sej11.repositories.PilganRepository;
 import com.uc.sej11.repositories.SoalRepository;
+import com.uc.sej11.repositories.WaktuRepository;
 
 import java.util.List;
 
 public class PlayPilganViewModel extends AndroidViewModel {
     private SoalRepository soalRepository;
     private PilganRepository pilganRepository;
+    private WaktuRepository waktuRepository;
     private static final String TAG = "PlayPilganViewModel";
 
     public PlayPilganViewModel(@NonNull Application application) {
@@ -28,6 +31,7 @@ public class PlayPilganViewModel extends AndroidViewModel {
         Log.d(TAG, "Init: " + token);
         soalRepository = SoalRepository.getInstance(token);
         pilganRepository = PilganRepository.getInstance(token);
+        waktuRepository = WaktuRepository.getInstance(token);
     }
 
     private MutableLiveData<List<Soal.Sej11Soal>> resultSoal = new MutableLiveData<>();
@@ -44,6 +48,14 @@ public class PlayPilganViewModel extends AndroidViewModel {
     }
     public LiveData<List<Pilgan.Sej11OpsiPilgan>> getResultPilgan(){
         return resultPilgan;
+    }
+
+    private MutableLiveData<List<Waktu.Sej11Waktu>> resultWaktu = new MutableLiveData<>();
+    public void getSej11_waktu(String id){
+        resultWaktu = waktuRepository.getSej11_waktu(id);
+    }
+    public LiveData<List<Waktu.Sej11Waktu>> getResultWaktu(){
+        return resultWaktu;
     }
 
     @Override

@@ -70,9 +70,15 @@ public class PlayPilganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check answer
-                soaltry++;
-                Log.d(TAG, "SoalTry after add: " + soaltry);
+                SoalTryIncrease();
                 SoalChange();
+                Log.d(TAG, "soalBenarcheck: " + listPilgan.get(0).getStatus_benar());
+
+                if(listPilgan.get(0).getStatus_benar() == 1){
+                    //benar
+                }else{
+                    //salah
+                }
 
             }
         });
@@ -105,6 +111,11 @@ public class PlayPilganActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void SoalTryIncrease() {
+        soaltry++;
+        Log.d(TAG, "SoalTry after add: " + soaltry);
     }
 
     private Observer<List<Soal.Sej11Soal>> showData = new Observer<List<Soal.Sej11Soal>>() {
