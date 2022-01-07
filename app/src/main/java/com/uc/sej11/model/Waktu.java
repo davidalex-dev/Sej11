@@ -10,7 +10,7 @@ import java.util.List;
 public class Waktu implements Parcelable {
 
 
-    private List<Sej11Waktu> sej11_waktu;
+    private List<Data> data;
 
     protected Waktu(Parcel in) {
     }
@@ -32,12 +32,12 @@ public class Waktu implements Parcelable {
         return new Gson().fromJson(str, Waktu.class);
     }
 
-    public List<Sej11Waktu> getSej11_waktu() {
-        return sej11_waktu;
+    public List<Data> getdataWaktu() {
+        return data;
     }
 
-    public void setSej11_waktu(List<Sej11Waktu> sej11_waktu) {
-        this.sej11_waktu = sej11_waktu;
+    public void setData(List<Data> data) {
+        this.data = data;
     }
 
     @Override
@@ -49,13 +49,13 @@ public class Waktu implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
     }
 
-    public static class Sej11Waktu {
+    public static class Data {
         private int id;
         private int waktu;
 
-        public static Sej11Waktu objectFromData(String str) {
+        public static Data objectFromData(String str) {
 
-            return new Gson().fromJson(str, Sej11Waktu.class);
+            return new Gson().fromJson(str, Data.class);
         }
 
         public int getId() {

@@ -13,19 +13,21 @@ import android.widget.TextView;
 
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
-import com.uc.sej11.model.Materi;
 import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.Soal;
-import com.uc.sej11.view.Fragments.MateriFragment.MateriViewModel;
+import com.uc.sej11.model.Waktu;
 
 import java.util.List;
 
 public class PlayPilganActivity extends AppCompatActivity {
 
-    private int soaltry = 0;
-    private String materiId, soalId;
+    private int soaltry = 0; //soal ke brp (mulai dri 0 hingga 9)
+    private int timerId; //timer ID
+    private int score; //skor
+    private String materiId;
     private List<Soal.Sej11Soal> listSoal;
     private List<Pilgan.Sej11OpsiPilgan> listPilgan;
+    private List<Waktu> listWaktu;
     TextView txt_timer, txt_question, txt_outof;
     Button pilgan_a, pilgan_b, pilgan_c, pilgan_d, pilgan_e;
 
@@ -57,28 +59,31 @@ public class PlayPilganActivity extends AppCompatActivity {
         //init the view
         InitView();
 
+        //get question, answer, and timer
         playPilganViewModel.getResultSoal().observe(this, showData);
-
-
-        //get timer
-        //get question
-        //get answer
-
+        //playPilganViewModel.getResultWaktu().observe(this, showWaktu);
         SoalInitialize();
 
+        //kalau pilgan diteken
         pilgan_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //check answer
                 SoalTryIncrease();
-                SoalChange();
+
+                //score check
                 Log.d(TAG, "soalBenarcheck: " + listPilgan.get(0).getStatus_benar());
 
                 if(listPilgan.get(0).getStatus_benar() == 1){
-                    //benar
-                }else{
-                    //salah
+                    Log.d(TAG, "soal benar");
+                    score = score+10;
+                    Log.d(TAG, "Current score: " + score);
+                }else{ //temp. else to be removed
+                    Log.d(TAG, "soal salah");
                 }
+
+                //change answer
+                SoalChange();
 
             }
         });
@@ -113,23 +118,19 @@ public class PlayPilganActivity extends AppCompatActivity {
 
     }
 
-    private void SoalTryIncrease() {
-        soaltry++;
-        Log.d(TAG, "SoalTry after add: " + soaltry);
-    }
 
-    private Observer<List<Soal.Sej11Soal>> showData = new Observer<List<Soal.Sej11Soal>>() {
+    //waktu
+//    private Observer<Waktu> showWaktu = new Observer<Waktu>() {
+//        @Override
+//        public void onChanged(Waktu waktu) {
+//            Log.d(TAG, "Test: " + waktu.getdataWaktu().size());
+//
+//        }
+//    };
 
-        @Override
-        public void onChanged(List<Soal.Sej11Soal> sej11Soals) {
-            Log.d(TAG, "SoalTry: " + soaltry);
-            listSoal = sej11Soals;
-
-        }
-    };
-
+    //soal
     private void SoalInitialize(){
-        Log.d(TAG, "ARE YOU READY?");
+        Log.d(TAG, "Soal is initializing...");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -142,51 +143,71 @@ public class PlayPilganActivity extends AppCompatActivity {
         Log.d(TAG, "Hello from SoalChange");
 
         if(soaltry >= listSoal.size()){
+            //soal selesai
             Log.d(TAG, "le end");
+            Log.d(TAG, "Total score: " + score);
+
+            //intent bundle ke result screen
+            //bundle = materiId dan skor
+
             finish();
+
         }else{
             Log.d(TAG, "Soal has changed");
             txt_question.setText(listSoal.get(soaltry).getSoal());
             txt_outof.setText("Question " + (soaltry+1) + " out of " + listSoal.size());
 
-            playPilganViewModel.getSej11_opsi_pilgan(Integer.toString(soaltry+1));
+            timerId = listSoal.get(soaltry).getSej11_waktu_id();
 
+            playPilganViewModel.getSej11_opsi_pilgan(Integer.toString(soaltry+1));
             playPilganViewModel.getResultPilgan().observe(PlayPilganActivity.this, showPilgan);
             PilganInitialize();
+
         }
 
 
     }
 
+    private Observer<List<Soal.Sej11Soal>> showData = new Observer<List<Soal.Sej11Soal>>() {
+
+        @Override
+        public void onChanged(List<Soal.Sej11Soal> sej11Soals) {
+            Log.d(TAG, "SoalTry: " + soaltry);
+            listSoal = sej11Soals;
+
+        }
+    };
+
+    private void SoalTryIncrease() {
+        soaltry++;
+        Log.d(TAG, "SoalTry after add: " + soaltry);
+    }
+
+    //pilgan
     private void PilganInitialize() {
         Log.d(TAG, "PILGAN IS INIT. ARE YOU READY?");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                changePilgan();
+                pilgan_a.setText(listPilgan.get(0).getOpsi_pg());
+                pilgan_b.setText(listPilgan.get(1).getOpsi_pg());
+                pilgan_c.setText(listPilgan.get(2).getOpsi_pg());
+                pilgan_d.setText(listPilgan.get(3).getOpsi_pg());
+                pilgan_e.setText(listPilgan.get(4).getOpsi_pg());
             }
         }, SOAL_TIME_OUT);
     }
-
-    private void changePilgan() {
-        pilgan_a.setText(listPilgan.get(0).getOpsi_pg());
-        pilgan_b.setText(listPilgan.get(1).getOpsi_pg());
-        pilgan_c.setText(listPilgan.get(2).getOpsi_pg());
-        pilgan_d.setText(listPilgan.get(3).getOpsi_pg());
-        pilgan_e.setText(listPilgan.get(4).getOpsi_pg());
-    }
-
 
     private Observer<List<Pilgan.Sej11OpsiPilgan>> showPilgan = new Observer<List<Pilgan.Sej11OpsiPilgan>>() {
         @Override
         public void onChanged(List<Pilgan.Sej11OpsiPilgan> sej11OpsiPilgans) {
             listPilgan = sej11OpsiPilgans;
 
-            Log.d(TAG, "PilganA: " + listPilgan.get(1).getOpsi_pg());
+            //Log.d(TAG, "PilganA: " + listPilgan.get(1).getOpsi_pg());
         }
     };
 
-
+    //initview
     private void InitView() {
         txt_timer = findViewById(R.id.textView_play_pilgan_timer);
         txt_question = findViewById(R.id.textView_play_pilgan_question);
@@ -203,5 +224,6 @@ public class PlayPilganActivity extends AppCompatActivity {
         playPilganViewModel = new ViewModelProvider(PlayPilganActivity.this).get(PlayPilganViewModel.class);
         playPilganViewModel.init(helper.getAccessToken());
         playPilganViewModel.getSej11_soal(materiId);
+        //playPilganViewModel.getResultWaktu();
     }
 }

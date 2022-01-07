@@ -30,4 +30,7 @@
     <string name="option_logout">Logout</string>
     <string name="option_change">Change Profile</string>
     <string name="app_welcome">Welcome to Sej11!</string>
+    <string name="result_back">Back to Menu</string>
+    <string name="result_retry">Retry Quiz</string>
+    <string name="beforequiz_start">Start Quiz</string>
 </resources>

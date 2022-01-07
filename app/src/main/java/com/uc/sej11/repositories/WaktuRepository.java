@@ -7,8 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.uc.sej11.model.Waktu;
 import com.uc.sej11.retrofit.RetrofitService;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,28 +25,45 @@ public class WaktuRepository {
         if(waktuRepository == null){
             waktuRepository = new WaktuRepository(token);
         }
-
         return waktuRepository;
     }
 
     public synchronized void resetInstance(){
-        if(waktuRepository != null){
+        if(waktuRepository !=null){
             waktuRepository = null;
         }
     }
 
-    public MutableLiveData<List<Waktu.Sej11Waktu>> getSej11_waktu(String id){
-        final MutableLiveData<List<Waktu.Sej11Waktu>> listData = new MutableLiveData<>();
+//    public MutableLiveData<Waktu.Data> getData(){
+//        final MutableLiveData<Waktu.Data> listData = new MutableLiveData<>();
+//
+//        apiService.getdataWaktu().enqueue(new Callback<Waktu>() {
+//            public void onResponse(Call<Waktu> call, Response<Waktu> response) {
+//                if (response.body() !=null){
+//                    Log.d(TAG, "onResponse: " + response.body().getdataWaktu().size());
+//                    listData.postValue(response.body().getdataWaktu().get(0));
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Waktu> call, Throwable t) {
+//                Log.e(TAG, "onFailure: " + t.getMessage());
+//            }
+//        });
+//
+//        return listData;
+//    }
 
-        apiService.getSej11_waktu(id).enqueue(new Callback<Waktu>() {
+    public MutableLiveData<Waktu> getData(){
+        final MutableLiveData<Waktu> listData = new MutableLiveData<>();
+
+        apiService.getdataWaktu().enqueue(new Callback<Waktu>() {
             @Override
             public void onResponse(Call<Waktu> call, Response<Waktu> response) {
-
                 if(response.body() !=null){
-                    Log.d(TAG, "onResponse: " + response.body().getSej11_waktu().size());
-                    listData.postValue(response.body().getSej11_waktu());
+                    Log.d(TAG, "onResponse: " + response.body().getdataWaktu().size());
+                    listData.postValue(response.body());
                 }
-
             }
 
             @Override
@@ -56,8 +71,6 @@ public class WaktuRepository {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
-
-//        return null; //temporary
         return listData;
     }
 

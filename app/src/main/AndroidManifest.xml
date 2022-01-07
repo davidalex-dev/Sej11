@@ -22,9 +22,6 @@
             android:name=".view.Activities.MateriReadyActivity.MateriReadActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Activities.PlayUraianActivity.PlayUraianActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.Activities.PlayPilganActivity.PlayPilganActivity"
             android:exported="false" />
         <activity

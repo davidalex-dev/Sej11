@@ -8,8 +8,6 @@ import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
 import com.uc.sej11.model.Waktu;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -49,14 +47,12 @@ public interface ApiEndPoints {
             @Path("id") String id
     );
 
-    @GET("sej11_waktu/{id}")
-    Call<Waktu> getSej11_waktu(
-            @Path("id") String id
-    );
-
 //    @GET("sej11_soal/{sej11_soal}")
 //    Call<List<Soal>> getSej11_soal(
 //            @Path("sej11_soal") String id
 //    );
+
+    @GET("sej11_waktu")
+    Call<Waktu> getdataWaktu();
 
 }

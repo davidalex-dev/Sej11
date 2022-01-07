@@ -31,7 +31,7 @@ public class PlayPilganViewModel extends AndroidViewModel {
         Log.d(TAG, "Init: " + token);
         soalRepository = SoalRepository.getInstance(token);
         pilganRepository = PilganRepository.getInstance(token);
-        waktuRepository = WaktuRepository.getInstance(token);
+        //waktuRepository = WaktuRepository.getInstance(token);
     }
 
     private MutableLiveData<List<Soal.Sej11Soal>> resultSoal = new MutableLiveData<>();
@@ -50,13 +50,13 @@ public class PlayPilganViewModel extends AndroidViewModel {
         return resultPilgan;
     }
 
-    private MutableLiveData<List<Waktu.Sej11Waktu>> resultWaktu = new MutableLiveData<>();
-    public void getSej11_waktu(String id){
-        resultWaktu = waktuRepository.getSej11_waktu(id);
-    }
-    public LiveData<List<Waktu.Sej11Waktu>> getResultWaktu(){
-        return resultWaktu;
-    }
+//    private MutableLiveData<Waktu> resultWaktu = new MutableLiveData<>();
+//    public void getWaktu(){
+//        resultWaktu = waktuRepository.getData();
+//    }
+//    public LiveData<Waktu> getResultWaktu(){
+//        return resultWaktu;
+//    }
 
     @Override
     protected void onCleared() {
@@ -64,6 +64,7 @@ public class PlayPilganViewModel extends AndroidViewModel {
         Log.d(TAG, "onCleared: ");
         soalRepository.resetInstance();
         pilganRepository.resetInstance();
+        //waktuRepository.resetInstance();
     }
 
 }
