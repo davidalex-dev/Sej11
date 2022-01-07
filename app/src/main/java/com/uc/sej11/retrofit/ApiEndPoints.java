@@ -6,7 +6,6 @@ import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
-import com.uc.sej11.model.Waktu;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -52,7 +51,7 @@ public interface ApiEndPoints {
 //            @Path("sej11_soal") String id
 //    );
 
-    @GET("sej11_waktu")
-    Call<Waktu> getdataWaktu();
+//    @GET("sej11_waktu")
+//    Call<Waktu> getTimer();
 
 }

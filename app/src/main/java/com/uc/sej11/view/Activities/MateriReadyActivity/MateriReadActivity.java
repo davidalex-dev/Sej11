@@ -20,6 +20,7 @@ import com.uc.sej11.helper.SharedPreferenceHelper;
 import com.uc.sej11.model.Materi;
 import com.uc.sej11.view.Fragments.MateriFragment.MateriAdapter;
 import com.uc.sej11.view.Fragments.MateriFragment.MateriViewModel;
+import com.uc.sej11.view.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,6 @@ import java.util.List;
 public class MateriReadActivity extends AppCompatActivity {
 
     private String materiId;
-    private String idMateri;
 
     private TextView txt_title, txt_description;
     private ImageView img_materi;

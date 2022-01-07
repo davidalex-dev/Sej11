@@ -12,12 +12,15 @@
         android:id="@+id/textView_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginBottom="16dp"
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_result_score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
 
     <TextView
         android:id="@+id/textView_result_score"
@@ -27,7 +30,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="224dp" />
+        tools:layout_editor_absoluteY="167dp" />
 
     <Button
         android:id="@+id/btn_result_retry"
@@ -35,16 +38,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="@string/result_retry"
-        app:layout_constraintTop_toBottomOf="@+id/textView_result_score"
-        tools:layout_editor_absoluteX="128dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_result_score" />
 
     <Button
         android:id="@+id/btn_result_menu_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/result_back"
-        app:layout_constraintTop_toBottomOf="@+id/btn_result_retry"
-        tools:layout_editor_absoluteX="116dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_result_retry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

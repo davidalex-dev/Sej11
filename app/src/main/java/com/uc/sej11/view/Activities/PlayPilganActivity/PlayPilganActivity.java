@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,7 +16,9 @@ import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
 import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.Soal;
-import com.uc.sej11.model.Waktu;
+import com.uc.sej11.view.Activities.MateriReadyActivity.MateriReadActivity;
+import com.uc.sej11.view.Activities.ResultActivity.ResultActivity;
+import com.uc.sej11.view.LoadingDialog;
 
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class PlayPilganActivity extends AppCompatActivity {
     private String materiId;
     private List<Soal.Sej11Soal> listSoal;
     private List<Pilgan.Sej11OpsiPilgan> listPilgan;
-    private List<Waktu> listWaktu;
+    //private List<Waktu> listWaktu;
     TextView txt_timer, txt_question, txt_outof;
     Button pilgan_a, pilgan_b, pilgan_c, pilgan_d, pilgan_e;
 
@@ -37,21 +40,28 @@ public class PlayPilganActivity extends AppCompatActivity {
     private static final String TAG = "PlayPilganActivity";
     private static final int SOAL_TIME_OUT = 1500;
 
+    LoadingDialog loadingDialog = new LoadingDialog(PlayPilganActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_pilgan);
 
         //get bundle
-        if(savedInstanceState == null){
-            Bundle id = getIntent().getExtras();
-            if(id == null){
-                materiId = null;
-            }else{
-                materiId = id.getString("materi_id");
-            }
-        }else{
-            materiId = (String) savedInstanceState.getSerializable("materi_id");
+//        if(savedInstanceState == null){
+//            Bundle id = getIntent().getExtras();
+//            if(id == null){
+//                materiId = null;
+//            }else{
+//                materiId = id.getString("materi_id");
+//            }
+//        }else{
+//            materiId = (String) savedInstanceState.getSerializable("materi_id");
+//        }
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+            materiId = extras.getString("materi_id");
         }
 
         Log.d(TAG, "Intent bundle is: " + materiId);
@@ -62,6 +72,7 @@ public class PlayPilganActivity extends AppCompatActivity {
         //get question, answer, and timer
         playPilganViewModel.getResultSoal().observe(this, showData);
         //playPilganViewModel.getResultWaktu().observe(this, showWaktu);
+        //playPilganViewModel.getResultTimer().observe(this, showTimer);
         SoalInitialize();
 
         //kalau pilgan diteken
@@ -72,15 +83,7 @@ public class PlayPilganActivity extends AppCompatActivity {
                 SoalTryIncrease();
 
                 //score check
-                Log.d(TAG, "soalBenarcheck: " + listPilgan.get(0).getStatus_benar());
-
-                if(listPilgan.get(0).getStatus_benar() == 1){
-                    Log.d(TAG, "soal benar");
-                    score = score+10;
-                    Log.d(TAG, "Current score: " + score);
-                }else{ //temp. else to be removed
-                    Log.d(TAG, "soal salah");
-                }
+                ScoreCheck(listPilgan.get(0).getStatus_benar());
 
                 //change answer
                 SoalChange();
@@ -92,6 +95,13 @@ public class PlayPilganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check answer
+                SoalTryIncrease();
+
+                //score check
+                ScoreCheck(listPilgan.get(1).getStatus_benar());
+
+                //change answer
+                SoalChange();
             }
         });
 
@@ -99,6 +109,13 @@ public class PlayPilganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check answer
+                SoalTryIncrease();
+
+                //score check
+                ScoreCheck(listPilgan.get(2).getStatus_benar());
+
+                //change answer
+                SoalChange();
             }
         });
 
@@ -106,6 +123,13 @@ public class PlayPilganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check answer
+                SoalTryIncrease();
+
+                //score check
+                ScoreCheck(listPilgan.get(3).getStatus_benar());
+
+                //change answer
+                SoalChange();
             }
         });
 
@@ -113,6 +137,13 @@ public class PlayPilganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check answer
+                SoalTryIncrease();
+
+                //score check
+                ScoreCheck(listPilgan.get(4).getStatus_benar());
+
+                //change answer
+                SoalChange();
             }
         });
 
@@ -125,6 +156,13 @@ public class PlayPilganActivity extends AppCompatActivity {
 //        public void onChanged(Waktu waktu) {
 //            Log.d(TAG, "Test: " + waktu.getdataWaktu().size());
 //
+//        }
+//    };
+
+//    private Observer<Waktu> showTimer = new Observer<Waktu>() {
+//        @Override
+//        public void onChanged(Waktu waktu) {
+//            Log.d(TAG, "Test: " + waktu.getTimer().size());
 //        }
 //    };
 
@@ -150,6 +188,10 @@ public class PlayPilganActivity extends AppCompatActivity {
             //intent bundle ke result screen
             //bundle = materiId dan skor
 
+            Intent i = new Intent(PlayPilganActivity.this, ResultActivity.class);
+            i.putExtra("materi_id", materiId);
+            i.putExtra("score", score);
+            startActivity(i);
             finish();
 
         }else{
@@ -181,6 +223,7 @@ public class PlayPilganActivity extends AppCompatActivity {
     private void SoalTryIncrease() {
         soaltry++;
         Log.d(TAG, "SoalTry after add: " + soaltry);
+        loadingDialog.startLoadingDialog();
     }
 
     //pilgan
@@ -194,6 +237,8 @@ public class PlayPilganActivity extends AppCompatActivity {
                 pilgan_c.setText(listPilgan.get(2).getOpsi_pg());
                 pilgan_d.setText(listPilgan.get(3).getOpsi_pg());
                 pilgan_e.setText(listPilgan.get(4).getOpsi_pg());
+
+                loadingDialog.dismissDialog();
             }
         }, SOAL_TIME_OUT);
     }
@@ -209,6 +254,8 @@ public class PlayPilganActivity extends AppCompatActivity {
 
     //initview
     private void InitView() {
+        loadingDialog.startLoadingDialog();
+
         txt_timer = findViewById(R.id.textView_play_pilgan_timer);
         txt_question = findViewById(R.id.textView_play_pilgan_question);
         txt_outof = findViewById(R.id.textView_play_pilgan_outof);
@@ -224,6 +271,24 @@ public class PlayPilganActivity extends AppCompatActivity {
         playPilganViewModel = new ViewModelProvider(PlayPilganActivity.this).get(PlayPilganViewModel.class);
         playPilganViewModel.init(helper.getAccessToken());
         playPilganViewModel.getSej11_soal(materiId);
-        //playPilganViewModel.getResultWaktu();
+        //playPilganViewModel.getResultTimer();
     }
+
+    @Override
+    public void onBackPressed() {
+        //back button is disabled.
+    }
+
+    private void ScoreCheck(int a){
+        Log.d(TAG, "ScoreCheck...");
+        if(a == 1){
+            Log.d(TAG, "soal benar");
+            score = score+10;
+            Log.d(TAG, "Current score: " + score);
+        }else{ //temp. else to be removed
+            Log.d(TAG, "soal salah");
+        }
+
+    }
+
 }

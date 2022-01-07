@@ -2,7 +2,6 @@ package com.uc.sej11.view.Fragments.PlayFragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.uc.sej11.R;
 import com.uc.sej11.model.Materi;
-import com.uc.sej11.view.Activities.MateriReadyActivity.MateriReadActivity;
-import com.uc.sej11.view.Activities.PlayPilganActivity.PlayPilganActivity;
+import com.uc.sej11.view.Activities.BeforeQuizActivity.BeforeQuizActivity;
 
 import java.util.List;
 
@@ -50,13 +48,18 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.CardViewViewHo
     @Override
     public void onBindViewHolder(@NonNull PlayAdapter.CardViewViewHolder holder, int position) {
         final Materi.Data results = getDataList().get(position);
+        holder.txt_level.setText("Level " + results.getId());
         holder.txt_name.setText(results.getJudul_sub_bab());
         Log.d(TAG, "Hello from PlayAdapter. Judul is: " + results.getJudul_sub_bab());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, PlayPilganActivity.class);
+//                Intent i = new Intent(context, PlayPilganActivity.class);
+//                i.putExtra("materi_id", ""+results.getId());
+//                context.startActivity(i);
+
+                Intent i = new Intent(context, BeforeQuizActivity.class);
                 i.putExtra("materi_id", ""+results.getId());
                 context.startActivity(i);
             }
@@ -70,13 +73,13 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.CardViewViewHo
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
-        TextView txt_name;
+        TextView txt_name, txt_level;
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cv_layout_play);
+            txt_level = itemView.findViewById(R.id.textView_materi_level);
             txt_name = itemView.findViewById(R.id.textView_materi_name);
-
         }
     }
 

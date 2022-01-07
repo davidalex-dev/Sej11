@@ -47,13 +47,12 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.CardViewVi
     public void onBindViewHolder(@NonNull MateriAdapter.CardViewViewHolder holder, int position) {
         final Materi.Data results = getDataList().get(position);
         holder.txt_name.setText(results.getJudul_sub_bab());
-        holder.txt_level.setText("Level " + results.getId());
+
         Log.d(TAG, "Judul is: " + results.getJudul_sub_bab());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(context, "Hello there!", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(context, MateriReadActivity.class);
                 i.putExtra("materi_id", ""+results.getId());
                 context.startActivity(i);
@@ -69,13 +68,13 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.CardViewVi
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
-        TextView txt_name, txt_level;
+        TextView txt_name;
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cv_layout_materi);
             txt_name = itemView.findViewById(R.id.textView_materi_name);
-            txt_level = itemView.findViewById(R.id.textView_materi_level);
+
         }
     }
 }
