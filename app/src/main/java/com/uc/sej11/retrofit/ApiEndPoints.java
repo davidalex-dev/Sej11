@@ -6,6 +6,7 @@ import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
+import com.uc.sej11.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -45,6 +46,9 @@ public interface ApiEndPoints {
     Call<Pilgan> getSej11_opsi_pilgan(
             @Path("id") String id
     );
+
+    @GET("users")
+    Call<User> getUser();
 
 //    @GET("sej11_soal/{sej11_soal}")
 //    Call<List<Soal>> getSej11_soal(

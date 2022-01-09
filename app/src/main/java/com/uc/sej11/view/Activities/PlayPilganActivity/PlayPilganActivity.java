@@ -25,13 +25,16 @@ import java.util.List;
 public class PlayPilganActivity extends AppCompatActivity {
 
     private int soaltry = 0; //soal ke brp (mulai dri 0 hingga 9)
+    private int pilganNo;
     private int timerId; //timer ID
-    private int score; //skor
+    private int score = 0; //skor
+    private int soalWrong = 0; //skor yang salah
+    private int soalCorrect = 0; //skor yang benar
     private String materiId;
     private List<Soal.Sej11Soal> listSoal;
     private List<Pilgan.Sej11OpsiPilgan> listPilgan;
     //private List<Waktu> listWaktu;
-    TextView txt_timer, txt_question, txt_outof;
+    TextView txt_timer, txt_question, txt_outof, txt_score;
     Button pilgan_a, pilgan_b, pilgan_c, pilgan_d, pilgan_e;
 
     private PlayPilganViewModel playPilganViewModel;
@@ -68,6 +71,7 @@ public class PlayPilganActivity extends AppCompatActivity {
 
         //init the view
         InitView();
+        PilganNoInitialize();
 
         //get question, answer, and timer
         playPilganViewModel.getResultSoal().observe(this, showData);
@@ -149,7 +153,6 @@ public class PlayPilganActivity extends AppCompatActivity {
 
     }
 
-
     //waktu
 //    private Observer<Waktu> showWaktu = new Observer<Waktu>() {
 //        @Override
@@ -166,6 +169,26 @@ public class PlayPilganActivity extends AppCompatActivity {
 //        }
 //    };
 
+    //initialize pilganNo
+    private void PilganNoInitialize() {
+        if(materiId.equals("1")){
+            pilganNo = 1;
+        }else if(materiId.equals("2")){
+            pilganNo = 11;
+        }else if(materiId.equals("3")){
+            pilganNo = 21;
+        }else if(materiId.equals("4")){
+            pilganNo = 31;
+        }else if(materiId.equals("5")){
+            pilganNo = 41;
+        }else if(materiId.equals("6")){
+            pilganNo = 51;
+        }
+
+        Log.d(TAG, "pilganNo is: " + pilganNo);
+
+    }
+
     //soal
     private void SoalInitialize(){
         Log.d(TAG, "Soal is initializing...");
@@ -178,7 +201,8 @@ public class PlayPilganActivity extends AppCompatActivity {
     }
 
     private void SoalChange(){
-        Log.d(TAG, "Hello from SoalChange");
+        Log.d(TAG, "SoalChecking, soalCorrect: " + soalCorrect);
+        Log.d(TAG, "SoalChecking, soalWrong: " + soalWrong);
 
         if(soaltry >= listSoal.size()){
             //soal selesai
@@ -191,17 +215,22 @@ public class PlayPilganActivity extends AppCompatActivity {
             Intent i = new Intent(PlayPilganActivity.this, ResultActivity.class);
             i.putExtra("materi_id", materiId);
             i.putExtra("score", score);
+            i.putExtra("soalCorrect", soalCorrect);
+            i.putExtra("soalWrong", soalWrong);
+            loadingDialog.dismissDialog();
             startActivity(i);
             finish();
 
         }else{
             Log.d(TAG, "Soal has changed");
+
+            txt_score.setText("Score: " + score);
             txt_question.setText(listSoal.get(soaltry).getSoal());
             txt_outof.setText("Question " + (soaltry+1) + " out of " + listSoal.size());
 
             timerId = listSoal.get(soaltry).getSej11_waktu_id();
 
-            playPilganViewModel.getSej11_opsi_pilgan(Integer.toString(soaltry+1));
+            playPilganViewModel.getSej11_opsi_pilgan(Integer.toString(pilganNo));
             playPilganViewModel.getResultPilgan().observe(PlayPilganActivity.this, showPilgan);
             PilganInitialize();
 
@@ -222,6 +251,7 @@ public class PlayPilganActivity extends AppCompatActivity {
 
     private void SoalTryIncrease() {
         soaltry++;
+        pilganNo++;
         Log.d(TAG, "SoalTry after add: " + soaltry);
         loadingDialog.startLoadingDialog();
     }
@@ -259,6 +289,7 @@ public class PlayPilganActivity extends AppCompatActivity {
         txt_timer = findViewById(R.id.textView_play_pilgan_timer);
         txt_question = findViewById(R.id.textView_play_pilgan_question);
         txt_outof = findViewById(R.id.textView_play_pilgan_outof);
+        txt_score = findViewById(R.id.textView_play_pilgan_score);
 
         pilgan_a = findViewById(R.id.btn_play_pilgan_a);
         pilgan_b = findViewById(R.id.btn_play_pilgan_b);
@@ -284,9 +315,11 @@ public class PlayPilganActivity extends AppCompatActivity {
         if(a == 1){
             Log.d(TAG, "soal benar");
             score = score+10;
+            soalCorrect++;
             Log.d(TAG, "Current score: " + score);
         }else{ //temp. else to be removed
             Log.d(TAG, "soal salah");
+            soalWrong++;
         }
 
     }

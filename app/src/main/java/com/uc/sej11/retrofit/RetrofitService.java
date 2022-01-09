@@ -7,6 +7,7 @@ import com.uc.sej11.model.Pilgan;
 import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
+import com.uc.sej11.model.User;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -79,6 +80,10 @@ public class RetrofitService {
     }
 
     public Call<JsonObject> logout(){return api.logout();}
+
+    public Call<User> getUser(){
+        return api.getUser();
+    }
 
 //    public Call<Waktu> getTimer() {
 //        return api.getTimer();

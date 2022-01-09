@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Sej11"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.Activities.AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.Activities.BeforeQuizActivity.BeforeQuizActivity"
             android:exported="false" />
         <activity

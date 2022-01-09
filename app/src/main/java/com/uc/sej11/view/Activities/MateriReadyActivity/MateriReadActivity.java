@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.uc.sej11.R;
 import com.uc.sej11.helper.Const;
 import com.uc.sej11.helper.SharedPreferenceHelper;
 import com.uc.sej11.model.Materi;
+import com.uc.sej11.view.Activities.PlayPilganActivity.PlayPilganActivity;
 import com.uc.sej11.view.Fragments.MateriFragment.MateriAdapter;
 import com.uc.sej11.view.Fragments.MateriFragment.MateriViewModel;
 import com.uc.sej11.view.LoadingDialog;
@@ -35,6 +37,7 @@ public class MateriReadActivity extends AppCompatActivity {
     private MateriViewModel viewModel;
 
     private static final String TAG = "MateriReadActivity";
+    LoadingDialog loadingDialog = new LoadingDialog(MateriReadActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,14 @@ public class MateriReadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_materi_read);
 
         //initialize bundle
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             Bundle id = getIntent().getExtras();
-            if(id == null){
+            if (id == null) {
                 materiId = null;
-            }else{
+            } else {
                 materiId = id.getString("materi_id");
             }
-        }else{
+        } else {
             materiId = (String) savedInstanceState.getSerializable("materi_id");
         }
 
@@ -61,6 +64,7 @@ public class MateriReadActivity extends AppCompatActivity {
     }
 
     private void InitView() {
+        loadingDialog.startLoadingDialog();
         txt_title = findViewById(R.id.textView_materi_read_title);
         txt_description = findViewById(R.id.textView_materi_read_description);
         img_materi = findViewById(R.id.imageView_materi_read_picture);
@@ -75,9 +79,9 @@ public class MateriReadActivity extends AppCompatActivity {
     private Observer<Materi> showData = new Observer<Materi>() {
         @Override
         public void onChanged(Materi materi) {
-            String title = materi.getData().get(Integer.parseInt(materiId)-1).getJudul_sub_bab();
-            String description = materi.getData().get(Integer.parseInt(materiId)-1).getMateri();
-            String img_path = materi.getData().get(Integer.parseInt(materiId)-1).getGambar_utuh();
+            String title = materi.getData().get(Integer.parseInt(materiId) - 1).getJudul_sub_bab();
+            String description = materi.getData().get(Integer.parseInt(materiId) - 1).getMateri();
+            String img_path = materi.getData().get(Integer.parseInt(materiId) - 1).getGambar_utuh();
 
             //set picture
             Glide.with(MateriReadActivity.this).load(img_path).into(img_materi);
@@ -88,9 +92,18 @@ public class MateriReadActivity extends AppCompatActivity {
             //set description
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 txt_description.setText(Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY));
-            } else
+            } else {
                 txt_description.setText(Html.fromHtml(description));
-            };
+            }
 
-        };
+            //set visibility
+            txt_title.setVisibility(View.VISIBLE);
+            img_materi.setVisibility(View.VISIBLE);
+            txt_description.setVisibility(View.VISIBLE);
+
+            //loading dialog gone
+            loadingDialog.dismissDialog();
+
+        }
     };
+}

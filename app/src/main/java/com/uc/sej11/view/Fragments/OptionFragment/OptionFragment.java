@@ -6,17 +6,21 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
+import com.uc.sej11.model.User;
+import com.uc.sej11.view.Activities.AboutActivity;
 import com.uc.sej11.view.Activities.ChangeProfileActivity.ChangeProfileActivity;
 import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
 
@@ -27,7 +31,8 @@ import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
  */
 public class OptionFragment extends Fragment {
     TextView txt_name, txt_email, txt_school, txt_city, txt_birthyear;
-    Button btn_logout, btn_change;
+    Button btn_logout, btn_change, btn_about;
+    ImageView avatar;
 
     private OptionViewModel optionViewModel;
     private SharedPreferenceHelper helper;
@@ -89,14 +94,18 @@ public class OptionFragment extends Fragment {
 
         optionViewModel.init(helper.getAccessToken());
 
+        optionViewModel.getUser();
+        optionViewModel.getResultUser().observe(getActivity(), showUser);
+
         btn_logout = view.findViewById(R.id.button_option_logout);
         btn_change = view.findViewById(R.id.button_option_changeProfile);
+        btn_about = view.findViewById(R.id.button_option_about);
         txt_name = view.findViewById(R.id.textView_option_name);
         txt_email = view.findViewById(R.id.textView_option_email);
         txt_school = view.findViewById(R.id.textView_option_school);
         txt_city = view.findViewById(R.id.textView_option_city);
         txt_birthyear = view.findViewById(R.id.textView_option_birthyear);
-
+        avatar = view.findViewById(R.id.imageView_profile_avatar);
 
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +114,16 @@ public class OptionFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        btn_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AboutActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +153,25 @@ public class OptionFragment extends Fragment {
 
         });
     }
+
+    private Observer<User> showUser = new Observer<User>() {
+        @Override
+        public void onChanged(User user) {
+            txt_name.setText(user.getName());
+            txt_email.setText(user.getEmail());
+            txt_birthyear.setText(user.getBirthyear());
+            txt_city.setText(user.getCity());
+            txt_school.setText(user.getSchool());
+
+            txt_name.setVisibility(View.VISIBLE);
+            txt_email.setVisibility(View.VISIBLE);
+            txt_birthyear.setVisibility(View.VISIBLE);
+            txt_city.setVisibility(View.VISIBLE);
+            txt_school.setVisibility(View.VISIBLE);
+            avatar.setVisibility(View.VISIBLE);
+
+        }
+    };
 
     @Override
     public void onDetach() {

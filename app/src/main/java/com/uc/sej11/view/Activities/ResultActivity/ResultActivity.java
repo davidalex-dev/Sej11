@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uc.sej11.R;
@@ -16,10 +17,12 @@ import javax.xml.transform.Result;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private TextView desc, score;
+    private TextView desc, score, correct, wrong;
     private Button retry, back;
     private String materiId;
-    private int total_score;
+    private ImageView answer;
+
+    private int total_score, soalCorrect, soalWrong;
 
     private static final String TAG = "ResultActivity";
 
@@ -36,6 +39,8 @@ public class ResultActivity extends AppCompatActivity {
         if(extras!=null){
             materiId = extras.getString("materi_id");
             total_score = extras.getInt("score");
+            soalCorrect = extras.getInt("soalCorrect");
+            soalWrong = extras.getInt("soalWrong");
         }
 
         Log.d(TAG, "Materi ID is: " + materiId);
@@ -44,13 +49,18 @@ public class ResultActivity extends AppCompatActivity {
         //set score
         score.setText("Your score is " + total_score);
 
-        if(total_score <= 80){
+        if(total_score < 80){
+            answer.setImageResource(R.drawable.answer_wrong);
             Log.d(TAG, "You can do better!");
             desc.setText("Belajar lagi goblok");
         }else{
+            answer.setImageResource(R.drawable.answer_correct);
             Log.d(TAG, "You're great");
             desc.setText("Hebat.");
         }
+
+        correct.setText("Right: " + soalCorrect + "/" + (soalCorrect+soalWrong));
+        wrong.setText("Wrong: " + soalWrong + "/" + (soalCorrect+soalWrong));
 
         //if score >= 75
         //save to scoreboard database
@@ -83,6 +93,10 @@ public class ResultActivity extends AppCompatActivity {
     private void InitView() {
         desc = findViewById(R.id.textView_result_text);
         score = findViewById(R.id.textView_result_score);
+        correct = findViewById(R.id.textView_result_correct);
+        wrong = findViewById(R.id.textView_result_wrong);
+
+        answer = findViewById(R.id.imageView_answer);
 
         retry = findViewById(R.id.btn_result_retry);
         back = findViewById(R.id.btn_result_menu_back);

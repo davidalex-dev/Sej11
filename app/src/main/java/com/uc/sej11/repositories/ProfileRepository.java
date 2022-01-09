@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.uc.sej11.model.User;
 import com.uc.sej11.retrofit.RetrofitService;
 
 import org.json.JSONException;
@@ -38,6 +39,30 @@ public class ProfileRepository {
         if(profileRepository!=null){
             profileRepository = null;
         }
+    }
+
+    public MutableLiveData<User> getUser(){
+        MutableLiveData<User> user = new MutableLiveData<>();
+
+        apiService.getUser().enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+
+                if(response.body() !=null){
+                    Log.d(TAG, "onResponse: " + response.body());
+                    user.postValue(response.body());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return user;
     }
 
     public LiveData<String> logout(){

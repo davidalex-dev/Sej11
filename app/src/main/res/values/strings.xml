@@ -29,9 +29,15 @@
     <string name="hint_school">Enter your school\'s name</string>
     <string name="option_logout">Logout</string>
     <string name="option_change">Change Profile</string>
-    <string name="app_welcome">Welcome to Sej11!</string>
+    <string name="app_welcome">Welcome!</string>
     <string name="result_back">Back to Menu</string>
     <string name="result_retry">Retry Quiz</string>
     <string name="beforequiz_start">Start Quiz</string>
     <string name="dialog_wait">Please wait... Loading</string>
+    <string name="welcome_text">Sejarah 11 merupakan aplikasi mobile yang cocok bagi kamu untuk belajar Sejarah sekaligus bermain quiz dengan menyenangkan. Kamu bisa membaca materi-materi sejarah yg telah disediakan dan menguji kemampuan dan pengertian mu dengan fitur quiz.</string>
+    <string name="about_text">About</string>
+    <string name="about_desc1">Sejarah11 is a educational game that developed by team 10, consisting of David Alexander, Timothyus Kevin Dewanto, Sintya Tri Wahyu Lestari, and Armaida Gholia</string>
+    <string name="about_desc2">If you find any bugs, you can report them to tdewanto@student.ciputra.ac.id or dalexander03@student.ciputra.ac.id</string>
+    <string name="about_copyright">© 2021, all rights reserved.</string>
+    <string name="welcome_start">Select your choices below to get started</string>
 </resources>
