@@ -24,30 +24,51 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_materi_level"
+                android:id="@+id/textView_scoreboard_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="TextView"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
             <TextView
-                android:id="@+id/textView_materi_name"
-                android:layout_width="325dp"
+                android:id="@+id/textView_scoreboard_materi"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:maxLines="3"
+                android:layout_marginTop="12dp"
                 android:text="TextView"
                 android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/textView_scoreboard_username"
+                app:layout_constraintTop_toBottomOf="@+id/textView_scoreboard_username" />
+
+            <TextView
+                android:id="@+id/textView_scoreboard_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="TextView"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView_materi_level"
-                app:layout_constraintTop_toBottomOf="@+id/textView_materi_level" />
+                app:layout_constraintStart_toStartOf="@+id/textView_scoreboard_username"
+                app:layout_constraintTop_toBottomOf="@+id/textView_scoreboard_materi"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/person" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,9 +98,6 @@ public class MateriFragment extends Fragment {
 
     }
 
-
-
-
     List<Materi.Data> results = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
 

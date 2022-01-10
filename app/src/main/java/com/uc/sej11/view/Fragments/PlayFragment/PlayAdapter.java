@@ -77,7 +77,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.CardViewViewHo
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cv_layout_play);
+            cardView = itemView.findViewById(R.id.cv_layout_scoreboard);
             txt_level = itemView.findViewById(R.id.textView_materi_level);
             txt_name = itemView.findViewById(R.id.textView_materi_name);
         }

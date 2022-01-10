@@ -7,6 +7,7 @@ import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
 import com.uc.sej11.model.User;
+import com.uc.sej11.model.UserLevel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -49,6 +50,9 @@ public interface ApiEndPoints {
 
     @GET("users")
     Call<User> getUser();
+
+    @GET("sej11_user_level")
+    Call<UserLevel> getAll_level();
 
 //    @GET("sej11_soal/{sej11_soal}")
 //    Call<List<Soal>> getSej11_soal(

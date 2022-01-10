@@ -15,5 +15,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/user_card" />
+        tools:listitem="@layout/cv_scoreboard" />
 </androidx.constraintlayout.widget.ConstraintLayout>

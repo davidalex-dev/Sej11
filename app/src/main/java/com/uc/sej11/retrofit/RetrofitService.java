@@ -8,6 +8,7 @@ import com.uc.sej11.model.RegisterResponse;
 import com.uc.sej11.model.Soal;
 import com.uc.sej11.model.TokenResponse;
 import com.uc.sej11.model.User;
+import com.uc.sej11.model.UserLevel;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -83,6 +84,10 @@ public class RetrofitService {
 
     public Call<User> getUser(){
         return api.getUser();
+    }
+
+    public Call<UserLevel> getAll_level(){
+        return api.getAll_level();
     }
 
 //    public Call<Waktu> getTimer() {
