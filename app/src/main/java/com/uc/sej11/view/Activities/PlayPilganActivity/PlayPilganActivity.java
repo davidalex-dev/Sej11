@@ -43,7 +43,7 @@ public class PlayPilganActivity extends AppCompatActivity {
     private PlayPilganViewModel playPilganViewModel;
     private SharedPreferenceHelper helper;
 
-    private static final long COUNTDOWN = 31000;
+    private static final long COUNTDOWN = 16000;
     private CountDownTimer countdownTimer;
     private long timeLeftInMillis;
 
@@ -288,6 +288,8 @@ public class PlayPilganActivity extends AppCompatActivity {
                 pilgan_d.setVisibility(View.VISIBLE);
                 pilgan_e.setVisibility(View.VISIBLE);
                 txt_timer.setVisibility(View.VISIBLE);
+                txt_outof.setVisibility(View.VISIBLE);
+                txt_score.setVisibility(View.VISIBLE);
 
                 loadingDialog.dismissDialog();
 

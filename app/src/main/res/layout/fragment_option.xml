@@ -8,20 +8,6 @@
     tools:context=".view.Fragments.OptionFragment.OptionFragment">
 
     <Button
-        android:id="@+id/button_option_changeProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:shadowColor="@color/black"
-        android:shadowRadius="10"
-        android:text="@string/option_change"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_option_about"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/button_option_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,19 +18,21 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button_option_logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_option_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="116dp"
         android:shadowColor="@color/black"
         android:shadowRadius="10"
         android:text="@string/option_logout"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
