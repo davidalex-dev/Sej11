@@ -21,7 +21,6 @@ import com.uc.sej11.R;
 import com.uc.sej11.helper.SharedPreferenceHelper;
 import com.uc.sej11.model.User;
 import com.uc.sej11.view.Activities.AboutActivity;
-import com.uc.sej11.view.Activities.ChangeProfileActivity.ChangeProfileActivity;
 import com.uc.sej11.view.Activities.LoginActivity.LoginActivity;
 
 /**
@@ -98,7 +97,6 @@ public class OptionFragment extends Fragment {
         optionViewModel.getResultUser().observe(getActivity(), showUser);
 
         btn_logout = view.findViewById(R.id.button_option_logout);
-        btn_change = view.findViewById(R.id.button_option_changeProfile);
         btn_about = view.findViewById(R.id.button_option_about);
         txt_name = view.findViewById(R.id.textView_option_name);
         txt_email = view.findViewById(R.id.textView_option_email);
@@ -106,14 +104,6 @@ public class OptionFragment extends Fragment {
         txt_city = view.findViewById(R.id.textView_option_city);
         txt_birthyear = view.findViewById(R.id.textView_option_birthyear);
         avatar = view.findViewById(R.id.imageView_profile_avatar);
-
-        btn_change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), ChangeProfileActivity.class);
-                startActivity(i);
-            }
-        });
 
         btn_about.setOnClickListener(new View.OnClickListener() {
             @Override

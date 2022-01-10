@@ -5,12 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.uc.sej11.R;
+import com.uc.sej11.helper.SharedPreferenceHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +22,10 @@ import com.uc.sej11.R;
  * create an instance of this fragment.
  */
 public class ScoreboardFragment extends Fragment {
+
+    private ScoreboardViewModel scoreboardViewModel;
+    private RecyclerView recyclerView;
+    private SharedPreferenceHelper helper;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,6 +78,15 @@ public class ScoreboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        recyclerView = view.findViewById(R.id.rv_scoreboard);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        scoreboardViewModel = new ViewModelProvider(getActivity()).get(ScoreboardViewModel.class);
+        scoreboardViewModel.init(helper.getAccessToken());
+
+
+
     }
+
+    LinearLayoutManager linearLayoutManager;
 
 }
