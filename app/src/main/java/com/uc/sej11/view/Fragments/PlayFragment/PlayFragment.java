@@ -91,6 +91,8 @@ public class PlayFragment extends Fragment {
         materiViewModel.init(helper.getAccessToken());
         materiViewModel.getData();
         materiViewModel.getResultData().observe(getActivity(), showData);
+
+        recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
     }
 
     List<Materi.Data> results = new ArrayList<>();

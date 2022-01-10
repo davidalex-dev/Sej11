@@ -40,4 +40,7 @@
     <string name="about_desc2">If you find any bugs, you can report them to tdewanto@student.ciputra.ac.id or dalexander03@student.ciputra.ac.id</string>
     <string name="about_copyright">© 2021, all rights reserved.</string>
     <string name="welcome_start">Select your choices below to get started</string>
+    <string name="quiz_desc">Quiz ini cocok bagi kalian yang mau tau sampai mana pengetahuan kalian pada pokok bahasan materi Sejarah kelas 11 sesuai dengan judul pada setiap level</string>
+    <string name="quiz_name">Quiz</string>
+    <string name="materi_desc">Fitur materi cocok bagi kalian yang yang ingin membaca dan mendalami materi sejarah di kelas 11 dan juga sebagai tempat untuk mempersiapkan diri sebelum memulai quiznya</string>
 </resources>

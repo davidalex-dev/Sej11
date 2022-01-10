@@ -52,17 +52,17 @@ public class ResultActivity extends AppCompatActivity {
         if(total_score < 80){
             answer.setImageResource(R.drawable.answer_wrong);
             Log.d(TAG, "You can do better!");
-            desc.setText("Belajar lagi goblok");
+            desc.setText("You can do better.");
         }else{
             answer.setImageResource(R.drawable.answer_correct);
             Log.d(TAG, "You're great");
-            desc.setText("Hebat.");
+            desc.setText("Great job!");
         }
 
         correct.setText("Right: " + soalCorrect + "/" + (soalCorrect+soalWrong));
         wrong.setText("Wrong: " + soalWrong + "/" + (soalCorrect+soalWrong));
 
-        //if score >= 75
+        //if score >= 80
         //save to scoreboard database
         //high score!!
 

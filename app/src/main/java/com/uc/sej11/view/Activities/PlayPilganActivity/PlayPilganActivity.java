@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.uc.sej11.view.Activities.ResultActivity.ResultActivity;
 import com.uc.sej11.view.LoadingDialog;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class PlayPilganActivity extends AppCompatActivity {
 
@@ -40,8 +43,13 @@ public class PlayPilganActivity extends AppCompatActivity {
     private PlayPilganViewModel playPilganViewModel;
     private SharedPreferenceHelper helper;
 
+    private static final long COUNTDOWN = 31000;
+    private CountDownTimer countdownTimer;
+    private long timeLeftInMillis;
+
     private static final String TAG = "PlayPilganActivity";
     private static final int SOAL_TIME_OUT = 1500;
+
 
     LoadingDialog loadingDialog = new LoadingDialog(PlayPilganActivity.this);
 
@@ -212,6 +220,10 @@ public class PlayPilganActivity extends AppCompatActivity {
             //intent bundle ke result screen
             //bundle = materiId dan skor
 
+            if(countdownTimer!=null){
+                countdownTimer.cancel();
+            }
+
             Intent i = new Intent(PlayPilganActivity.this, ResultActivity.class);
             i.putExtra("materi_id", materiId);
             i.putExtra("score", score);
@@ -253,6 +265,7 @@ public class PlayPilganActivity extends AppCompatActivity {
         soaltry++;
         pilganNo++;
         Log.d(TAG, "SoalTry after add: " + soaltry);
+        countdownTimer.cancel();
         loadingDialog.startLoadingDialog();
     }
 
@@ -268,7 +281,20 @@ public class PlayPilganActivity extends AppCompatActivity {
                 pilgan_d.setText(listPilgan.get(3).getOpsi_pg());
                 pilgan_e.setText(listPilgan.get(4).getOpsi_pg());
 
+                txt_question.setVisibility(View.VISIBLE);
+                pilgan_a.setVisibility(View.VISIBLE);
+                pilgan_b.setVisibility(View.VISIBLE);
+                pilgan_c.setVisibility(View.VISIBLE);
+                pilgan_d.setVisibility(View.VISIBLE);
+                pilgan_e.setVisibility(View.VISIBLE);
+                txt_timer.setVisibility(View.VISIBLE);
+
                 loadingDialog.dismissDialog();
+
+                //start countdown
+
+                timeLeftInMillis = COUNTDOWN;
+                startCountdown();
             }
         }, SOAL_TIME_OUT);
     }
@@ -281,6 +307,30 @@ public class PlayPilganActivity extends AppCompatActivity {
             //Log.d(TAG, "PilganA: " + listPilgan.get(1).getOpsi_pg());
         }
     };
+
+    //countdown
+    private void startCountdown(){
+        countdownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long l) {
+                timeLeftInMillis = l;
+                String timeFormatted = String.format(Locale.ENGLISH, "%02d", TimeUnit.MILLISECONDS.toSeconds(l));
+
+                txt_timer.setText(timeFormatted);
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeftInMillis = 0;
+                //updateCountDownText();
+                Log.d(TAG, "Time has ran out");
+                soalWrong++;
+                SoalTryIncrease();
+                SoalChange();
+            }
+        }.start();
+    }
+
 
     //initview
     private void InitView() {

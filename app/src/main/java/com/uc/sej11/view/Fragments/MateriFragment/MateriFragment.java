@@ -9,7 +9,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +80,7 @@ public class MateriFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_materi, container, false);
+
     }
 
     @Override
@@ -90,7 +93,13 @@ public class MateriFragment extends Fragment {
         materiViewModel.init(helper.getAccessToken());
         materiViewModel.getData();
         materiViewModel.getResultData().observe(getActivity(), showData);
+
+        recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
     }
+
+
+
 
     List<Materi.Data> results = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
